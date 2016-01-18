@@ -24,7 +24,7 @@ var config = {
 };
 
 gulp.task('sass', function() {
-    gulp.src(config.scssDir + '/main.scss')
+    gulp.src(config.scssDir + '/app.scss')
         .pipe(sass({
             // Allow Twitter Bootstrap and Bourbon to be @import'ed
             includePaths: [
@@ -38,7 +38,7 @@ gulp.task('sass', function() {
 
 gulp.task('icons', function() {
     // Copy Bootstrap's font files to the public directory
-    return gulp.src(config.bootstrapDir + '/assets/fonts/bootstrap/**/*')
+    return gulp.src(config.bootstrapDir + '/assets/fonts/**/*')
         .pipe(gulp.dest(config.publicDir + '/dist/fonts'));
 });
 
