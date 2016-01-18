@@ -2,6 +2,8 @@
 /node_modules
 /.idea
 /.vagrant
+/public/dist
 Homestead.yaml
 Homestead.json
 .env
+
