@@ -6,14 +6,8 @@ var jsmin = require('gulp-jsmin');
 var concat = require('gulp-concat');
 var minimist = require('minimist');
 
-var knownOptions = {
-    string: 'env',
-    default: {
-        env: process.env.NODE_ENV || 'dev'
-    }
-};
-
-var options = minimist(process.argv.slice(2), knownOptions);
+// Parse command line arguments
+var options = minimist(process.argv.slice(2), {string: 'env', default: {env: process.env.NODE_ENV || 'dev'}});
 
 var config = {
     bootstrapDir: './node_modules/bootstrap-sass',
@@ -44,6 +38,7 @@ gulp.task('icons', function() {
 
 gulp.task('js', function() {
     return gulp.src([
+            // Add the JavaScript files you want to combine and minify here
             config.jsDir + '/app.js'
         ])
         .pipe(concat('app.js'))
@@ -52,8 +47,9 @@ gulp.task('js', function() {
 });
 
 gulp.task('watch', function() {
-    // Recompile SASS on changes
-    gulp.watch(config.scssDir + '/**/*.scss', ['sass']);
+    // Recompile SASS and JS on changes
+    gulp.watch(config.scssDir + '/**/*', ['sass']);
+    gulp.watch(config.jsDir + '/**/*', ['js']);
 });
 
 gulp.task('default', ['sass', 'icons', 'js', 'watch']);
