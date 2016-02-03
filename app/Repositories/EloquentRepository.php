@@ -2,7 +2,13 @@
 
 namespace App\Repositories;
 
-class EloquentRepository
+/**
+ * Provides properties and methods that are common to all repositories that back up an Eloquent model.
+ *
+ * Class EloquentRepository
+ * @package App\Repositories
+ */
+abstract class EloquentRepository
 {
     /**
      * Eloquent model instance. Each individual repository is responsible for setting it.
