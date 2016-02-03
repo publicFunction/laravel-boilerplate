@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.box = "scotch/box"
     config.vm.network "private_network", ip: "192.168.10.10"
-    config.vm.hostname = "scotchbox"
+    config.vm.hostname = "xdesign"
 
 
     # You can choose to use regular folder syncing or NFS syncing. NFS is meant to be "better" but I've faced problems
