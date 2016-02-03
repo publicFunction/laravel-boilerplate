@@ -14,4 +14,14 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password'
     ];
+
+    /**
+     * Hash the user's password with bcrypt when setting.
+     *
+     * @param $value
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }
