@@ -18,43 +18,6 @@ abstract class EloquentRepository
     protected $model;
 
     /**
-     * Creates a record with the given attributes and returns a model representing it.
-     *
-     * @param array $attributes
-     *
-     * @return mixed
-     */
-    public function create(array $attributes)
-    {
-        return $this->model->create($attributes);
-    }
-
-    /**
-     * Updates a record identified by ID with the given attributes.
-     *
-     * @param       $id
-     * @param array $attributes
-     *
-     * @return mixed
-     */
-    public function update($id, array $attributes)
-    {
-        return $this->model->find($id)->update($attributes);
-    }
-
-    /**
-     * Deletes the record identified by its ID.
-     *
-     * @param $id
-     *
-     * @return mixed
-     */
-    public function delete($id)
-    {
-        return $this->model->destroy($id);
-    }
-
-    /**
      * Finds a single record identified by its ID and returns a model representing it.
      *
      * @param       $id
