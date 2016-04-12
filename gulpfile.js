@@ -6,12 +6,10 @@ var jsmin = require('gulp-jsmin');
 var concat = require('gulp-concat');
 var minimist = require('minimist');
 
-// Parse command line arguments
-var options = minimist(process.argv.slice(2), {string: 'env', default: {env: process.env.NODE_ENV || 'dev'}});
+// Determine our environment. 'dev' leaves assets unminified. 'prod' makes sure assets are minified.
+var options = minimist(process.argv.slice(2), {string: 'env', default: {env: process.env.NODE_ENV || 'prod'}});
 
 var config = {
-    bootstrapDir: './node_modules/bootstrap-sass',
-    bourbonDir: './node_modules/bourbon',
     scssDir: './resources/assets/sass',
     jsDir: './resources/assets/js',
     publicDir: './public'
@@ -19,13 +17,7 @@ var config = {
 
 gulp.task('sass', function() {
     gulp.src(config.scssDir + '/app.scss')
-        .pipe(sass({
-            // Allow Twitter Bootstrap and Bourbon to be @import'ed
-            includePaths: [
-                config.bootstrapDir + '/assets/stylesheets',
-                config.bourbonDir + '/app/assets/stylesheets'
-            ]
-        }).on('error', sass.logError))
+        .pipe(sass().on('error', sass.logError))
         .pipe(gulpif(options.env === 'prod', cssmin()))
         .pipe(gulp.dest(config.publicDir + '/dist/css'));
 });
