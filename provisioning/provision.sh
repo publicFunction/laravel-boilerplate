@@ -11,4 +11,3 @@ swapon /swapfile
 
 # Install composer deps
 /usr/bin/php /usr/local/bin/composer install --working-dir /var/www
-
