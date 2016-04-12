@@ -4,14 +4,14 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class HomepageTest extends TestCase
 {
     /**
-     * A basic functional test example.
+     * Test that the homepage shows what we expect.
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testHomepageShowsSlogan()
     {
         $this->visit('/')
              ->see('Build something cool.');
